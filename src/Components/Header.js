@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-// import hamburger from '../Media/hamburger'
-import startbootstrap from '../Media/startbootstrap'
+import hamburger from '../Media/hamburger.png'
+// import logo from '../Media/logo'
 
 class Header extends Component {
     constructor() {
@@ -10,12 +10,33 @@ class Header extends Component {
         }
     }
 
+    toggleShowFunc = () => {
+        this.setState({
+            toggleShow: true
+        })
+    }
+
     render() {
-        return <header>
+        return <div className='background'>
+            <nav className='nav-bar'>
             <div>
-                <img src={startbootstrap} />
+                <h1 className='logo'>Start Bootstrap</h1>
             </div>
-        </header>
+            
+            <div>
+                <button className='button'>MENU <img src={hamburger} alt='menu' className='hamburger'
+                onClick={this.toggleShowFunc}/></button>
+                <ul className={`nav-items ${this.state.toggleShow ? 'hidden' : ''}`}>
+                    <li>SERVICES</li>
+                    <li>PORTFOLIO</li>
+                    <li>ABOUT</li>
+                    <li>TEAM</li>
+                    <li>CONTACT</li>
+                </ul>
+            </div>
+        </nav>
+        
+    </div>
     }
 }
 
